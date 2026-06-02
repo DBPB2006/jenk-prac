@@ -39,6 +39,10 @@ pipeline{
                 sh """docker run -d -p 8990:80 jen:v1"""
             }
         }
+        stage("stage 3"){
+            steps{
+                sh """docker ps"""
+            }
     }
         post{
             success{
