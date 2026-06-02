@@ -26,22 +26,25 @@
 //     }
 // }
 // }
-pipeline{
+pipeline {
     agent any
-    stages{
-        stage("checkout"){
-            steps{
-                sh "terraform init"
+
+    stages {
+        stage('init') {
+            steps {
+                sh '/opt/homebrew/bin/terraform init'
             }
         }
-        stage("build"){
-            steps{
-                sh "terraform plan"
+
+        stage('plan') {
+            steps {
+                sh '/opt/homebrew/bin/terraform plan'
             }
         }
-        stage("run"){
-            steps{
-                sh "terraform apply -auto-approve" 
+
+        stage('apply') {
+            steps {
+                sh '/opt/homebrew/bin/terraform apply -auto-approve'
             }
         }
     }
