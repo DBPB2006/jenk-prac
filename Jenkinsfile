@@ -29,27 +29,20 @@
 pipeline{
     agent any
     stages{
-        stage("stage 1"){
+        stage("checkout"){
             steps{
-                sh """docker build -t jen:v1 ."""
+                sh "terraform init"
             }
         }
-        stage("stage 2"){
+        stage("build"){
             steps{
-                sh """docker run -d -p 8990:80 jen:v1"""
+                sh "terraform plan"
             }
         }
-        stage("stage 3"){
+        stage("run"){
             steps{
-                sh """docker ps"""
+                sh "terraform apply -auto-approve" 
             }
+        }
     }
-        post{
-            success{
-                echo "deployed successfully"
-            }
-            failure{
-                echo "deployment failed"
-            }
-        }
 }
