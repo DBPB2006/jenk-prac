@@ -6,7 +6,8 @@ metadata:
     app: jenk-app
 spec:
   selector:
-    app:jenk-app
+    labels:
+      app: jenk-app
   ports:
     - protocol: TCP
       ports: 4567
