@@ -1,15 +1,18 @@
 apiVersion: v1
 kind: Service
-metadata: 
+
+metadata:
   name: jenk-service
   labels:
     app: jenk-app
+
 spec:
   selector:
-    labels:
-      app: jenk-app
+    app: jenk-app
+
   ports:
     - protocol: TCP
-      ports: 4567
+      port: 4567
       targetPort: 80
+
   type: ClusterIP
